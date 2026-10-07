@@ -1,0 +1,52 @@
+# Regenerates the GitHub stats, top-languages and project cards used in README.md.
+# The cards are saved into profile/ in this repo, so the profile never depends on
+# the overloaded public github-readme-stats server.
+name: Update profile cards
+
+on:
+  schedule:
+    - cron: "17 7 * * *" # once a day
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    env:
+      THEME: bg_color=FFF7F9&title_color=C9506F&text_color=6E3A52&icon_color=EE8FA8&ring_color=EE8FA8&hide_border=true&border_radius=24
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stats card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          options: username=JMScripts1&show_icons=true&${{ env.THEME }}
+          path: profile/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Top languages card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          options: username=JMScripts1&layout=compact&langs_count=6&${{ env.THEME }}
+          path: profile/top-langs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Featured project card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=JMScripts1&repo=game-deal-tracker&${{ env.THEME }}
+          path: profile/pin-game-deal-tracker.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit updated cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/*.svg
+          git commit -m "Update profile cards" || exit 0
+          git push
