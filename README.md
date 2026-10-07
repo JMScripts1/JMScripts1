@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=900&color=C9506F&center=true&vCenter=true&width=560&lines=scripting+games+in+Roblox+Studio+with+Luau;building+Python+%2B+SQL+data+pipelines;turning+game+prices+into+dashboards;CS+%40+Ontario+Tech%2C+class+of+%2729" alt="Scripting games in Roblox Studio with Luau. Building Python + SQL data pipelines. Turning game prices into dashboards. CS at Ontario Tech, class of '29." />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=900&color=C9506F&center=true&vCenter=true&width=560&lines=scripting+games+in+Roblox+Studio+with+Luau;building+Python+%2B+SQL+data+pipelines;turning+game+prices+into+dashboards;CS+%40+Ontario+Tech%2C+class+of+2029" alt="Scripting games in Roblox Studio with Luau. Building Python + SQL data pipelines. Turning game prices into dashboards. CS at Ontario Tech, class of 2029." />
 </p>
 
 <p align="center">
