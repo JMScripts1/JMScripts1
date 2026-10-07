@@ -1,6 +1,8 @@
 # Regenerates the GitHub stats, top-languages and project cards used in README.md.
 # The cards are saved into profile/ in this repo, so the profile never depends on
 # the overloaded public github-readme-stats server.
+# Needs a repo secret named STATS_TOKEN: a classic personal access token with
+# no scopes ticked (read-only access to public data is all it needs).
 name: Update profile cards
 
 on:
@@ -25,7 +27,7 @@ jobs:
           card: stats
           options: username=JMScripts1&show_icons=true&${{ env.THEME }}
           path: profile/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.STATS_TOKEN }}
 
       - name: Top languages card
         uses: readme-tools/github-readme-stats-action@v1
@@ -33,7 +35,7 @@ jobs:
           card: top-langs
           options: username=JMScripts1&layout=compact&langs_count=6&${{ env.THEME }}
           path: profile/top-langs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.STATS_TOKEN }}
 
       - name: Featured project card
         uses: readme-tools/github-readme-stats-action@v1
@@ -41,7 +43,7 @@ jobs:
           card: pin
           options: username=JMScripts1&repo=game-deal-tracker&${{ env.THEME }}
           path: profile/pin-game-deal-tracker.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.STATS_TOKEN }}
 
       - name: Commit updated cards
         run: |
