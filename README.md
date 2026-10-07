@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/joshua-mathias"><img src="https://img.shields.io/badge/LinkedIn-C9506F?style=for-the-badge" alt="LinkedIn" /></a>
+  <a href="https://www.linkedin.com/in/joshua-mathias-9b759b327/"><img src="https://img.shields.io/badge/LinkedIn-C9506F?style=for-the-badge" alt="LinkedIn" /></a>
   <a href="mailto:joshmwork12@gmail.com"><img src="https://img.shields.io/badge/Email-C9506F?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://github.com/JMScripts1/game-deal-tracker"><img src="https://img.shields.io/badge/Featured_project-C9506F?style=for-the-badge&logo=github&logoColor=white" alt="Featured project: game-deal-tracker" /></a>
 </p>
