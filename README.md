@@ -9,68 +9,41 @@
 <p align="center">
   <a href="https://www.linkedin.com/in/joshua-mathias-9b759b327/"><img src="https://img.shields.io/badge/LinkedIn-C9506F?style=for-the-badge" alt="LinkedIn" /></a>
   <a href="mailto:joshmwork12@gmail.com"><img src="https://img.shields.io/badge/Email-C9506F?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://github.com/JMScripts1/game-deal-tracker"><img src="https://img.shields.io/badge/Featured_project-C9506F?style=for-the-badge&logo=github&logoColor=white" alt="Featured project: game-deal-tracker" /></a>
 </p>
 
 ## ✿ hi, i'm josh
 
-I'm a computer science student at Ontario Tech University (class of '29), based in Whitby, Ontario. I split my time between two things: building games in Roblox Studio with Luau, and the backend side of software, like data pipelines, SQL and dashboards.
-
-Before uni I spent a year in IT support at a managed services provider, imaging around 100 machines and keeping about 40 small businesses running. So I also know what it looks like when systems break.
+CS student at **Ontario Tech** (class of '29) in Whitby, ON. I build games in **Roblox Studio** with **Luau**, and I like the backend side of software: data pipelines, SQL and dashboards. Before uni I spent a year in IT support at an MSP, imaging ~100 machines and keeping ~40 small businesses running, so I also know what it looks like when systems break.
 
 <p align="center">
   <img src="./assets/lane-gamedev.svg" width="49%" alt="Lane 01, Game Dev: scripting games in Roblox Studio with Luau, plus years of C++ and Unreal Engine game programming through RP4K. Tools: Luau, Roblox Studio, C++, Unreal Engine." />
   <img src="./assets/lane-backend.svg" width="49%" alt="Lane 02, Backend and Full Stack: Python pipelines from REST APIs into SQLite, with SQL and Plotly Dash dashboards on top, plus a year of IT and systems work at an MSP. Tools: Python, SQL, SQLite, Plotly Dash." />
 </p>
 
-## ✿ right now
+**right now**
 
-- 🎮 building games in **Roblox Studio**, scripting everything in **Luau**
-- 📊 just wrapped **[game-deal-tracker](https://github.com/JMScripts1/game-deal-tracker)**, my PC game price tracker
-- 📚 this term: **Data Structures** and **Linear Algebra**
+- 🎮 building games in **Roblox Studio**, all in **Luau**
+- 📊 just shipped **[game-deal-tracker](https://github.com/JMScripts1/game-deal-tracker)**
+- 📚 this term: **Data Structures** + **Linear Algebra**
 - 💬 ask me about Luau, Python + SQL, or why your PC won't boot
 
 ## ✿ featured project
 
 <p align="center">
-  <a href="https://github.com/JMScripts1/game-deal-tracker"><img src="./profile/pin-game-deal-tracker.svg" alt="game-deal-tracker repository card" /></a>
+  <a href="https://github.com/JMScripts1/game-deal-tracker"><img src="./assets/project-game-deal-tracker.svg" width="100%" alt="Featured project: game-deal-tracker. An automated Python pipeline pulls PC game prices from a REST API into timestamped SQLite snapshots, then SQL joins and aggregations surface top deals, store comparisons and price trends in a Plotly Dash dashboard." /></a>
 </p>
 
-An automated Python pipeline pulls PC game prices from a public REST API and saves timestamped snapshots into a 3-table SQLite schema. SQL joins and aggregations then surface top deals, store comparisons and price trends in an interactive Plotly Dash dashboard.
-
-## ✿ tools i reach for
+## ✿ toolbox
 
 <p align="center">
-  <b>game dev</b><br />
-  <img src="https://img.shields.io/badge/Luau-C9506F?style=for-the-badge&logo=luau&logoColor=white" alt="Luau" />
-  <img src="https://img.shields.io/badge/Roblox_Studio-C9506F?style=for-the-badge&logo=robloxstudio&logoColor=white" alt="Roblox Studio" />
-  <img src="https://img.shields.io/badge/C%2B%2B-C9506F?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++" />
-  <img src="https://img.shields.io/badge/Unreal_Engine-C9506F?style=for-the-badge&logo=unrealengine&logoColor=white" alt="Unreal Engine" />
-</p>
-
-<p align="center">
-  <b>backend &amp; data</b><br />
-  <img src="https://img.shields.io/badge/Python-9E3D5C?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/SQLite-9E3D5C?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
-  <img src="https://img.shields.io/badge/Pandas-9E3D5C?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
-  <img src="https://img.shields.io/badge/Plotly_Dash-9E3D5C?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly Dash" />
-  <img src="https://img.shields.io/badge/Java-9E3D5C?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
-  <img src="https://img.shields.io/badge/HTML%2FCSS-9E3D5C?style=for-the-badge&logo=html5&logoColor=white" alt="HTML and CSS" />
-</p>
-
-<p align="center">
-  <b>systems</b><br />
-  <img src="https://img.shields.io/badge/Git-6E3A52?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-  <img src="https://img.shields.io/badge/Linux-6E3A52?style=for-the-badge&logo=linux&logoColor=white" alt="Linux" />
-  <img src="https://img.shields.io/badge/Windows_Server-6E3A52?style=for-the-badge" alt="Windows Server" />
-  <img src="https://img.shields.io/badge/Microsoft_365-6E3A52?style=for-the-badge" alt="Microsoft 365" />
+  <img src="./assets/toolbox.svg" width="100%" alt="Toolbox. Game dev: Luau, Roblox Studio, C++, Unreal Engine. Backend and data: Python, SQL, SQLite, Pandas, Plotly Dash, Java, HTML/CSS. Systems: Git, Linux, Windows Server, Microsoft 365." />
 </p>
 
 ## ✿ on github
 
 <p align="center">
-  <img src="./profile/stats.svg" height="165" alt="Josh's GitHub stats" />
-  <img src="./profile/top-langs.svg" height="165" alt="Josh's most used languages on GitHub" />
+  <img src="./profile/stats.svg" height="170" alt="Josh's GitHub stats" />
+  <img src="./profile/top-langs.svg" height="170" alt="Josh's most used languages on GitHub" />
 </p>
 
 <p align="center">
