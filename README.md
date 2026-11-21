@@ -9,45 +9,13 @@
   <a href="mailto:joshmwork12@gmail.com"><img src="https://img.shields.io/badge/email-0A0A0B?style=for-the-badge" alt="Email" /></a>
 </p>
 
-### ✦ hi, i'm josh
-
-CS student at **Ontario Tech** in Whitby, ON. I work on backend and infrastructure: APIs, databases, containers and the CI pipelines around them. Before uni I did IT support at a managed service provider, imaging about 100 machines for about 40 small businesses, which is where **OpsWatch** came from.
-
-Off the clock I make soul beats, cut the occasional edit, read too much manhwa and lift.
-
-**right now**
-
-- looking for a **Winter 2027 co-op** in backend, cloud or infrastructure
-- building **[OpsWatch](https://github.com/JMScripts1/opswatch)**, self-hosted IT health monitoring
-- happy to talk about Python, Docker and SQL, or why your PC won't boot
-
-### ✦ projects
-
 <p align="center">
-  <a href="https://github.com/JMScripts1/opswatch"><img src="./assets/project-opswatch.svg" width="100%" alt="OpsWatch, in progress. Self-hosted IT health monitoring modelled on the remote monitoring tools managed service providers use. Agents check disk, services, backup age, TLS expiry and pending updates; a FastAPI and PostgreSQL server stores results; a rules engine opens one ticket per problem; alerts go to Discord or Slack. Built with Python, FastAPI, PostgreSQL, Docker Compose, GitHub Actions, PowerShell and pytest." /></a>
+  <a href="https://jmscripts1.github.io/"><img src="./assets/about.svg" width="100%" alt="Hi, I'm Josh. CS student at Ontario Tech in Whitby, ON. I work on backend and infrastructure: APIs, databases, containers and the CI pipelines around them. Before uni I did IT support at a managed service provider, imaging about 100 machines for about 40 small businesses, which is where OpsWatch came from. Off the clock I make soul beats, cut the occasional edit, read too much manhwa and lift. Right now: looking for a Winter 2027 co-op in backend, cloud or infrastructure; building OpsWatch, self-hosted IT health monitoring; happy to talk about Python, Docker and SQL, or why your PC won't boot." /></a><br>
+  <a href="https://github.com/JMScripts1/opswatch"><img src="./assets/project-opswatch.svg" width="100%" alt="Projects. OpsWatch, in progress. Self-hosted IT health monitoring modelled on the remote monitoring tools managed service providers use. Agents check disk, services, backup age, TLS expiry and pending updates; a FastAPI and PostgreSQL server stores results; a rules engine opens one ticket per problem; alerts go to Discord or Slack. Built with Python, FastAPI, PostgreSQL, Docker Compose, GitHub Actions, PowerShell and pytest." /></a><br>
+  <a href="https://jmscripts1.github.io/game-deal-tracker/"><img src="./assets/project-game-deal-tracker.svg" width="100%" alt="Game Deal Tracker. Tracks prices across 30+ PC game stores through the CheapShark API, stores snapshots in a 5-table SQLite schema, and sends a Discord alert when a watched game hits its target price. Streamlit dashboard, pytest suite on Python 3.10 to 3.14. Links to its live page." /></a><br>
+  <a href="https://jmscripts1.github.io/assets/Joshua_Mathias_Resume.pdf"><img src="./assets/resume.svg" width="100%" alt="Résumé, links to the full PDF. Experience: IT Support and Systems Co-op at Personal Touch Computers, Sep 2023 to Feb 2024; Court Monitor and Guest Services at Flying Squirrel Sports, Jun 2023 to Nov 2026. Education: Ontario Tech University, BSc Computer Science, expected Apr 2029." /></a><br>
+  <img src="./assets/toolbox.svg" width="100%" alt="Toolbox. Languages: Python, C++, SQL, Java, Bash, PowerShell. Frameworks: FastAPI, SQLAlchemy, Streamlit, pandas, pytest. Databases: PostgreSQL, SQLite. Infrastructure: Docker, Docker Compose, Git, GitHub Actions, Linux (systemd), Windows Server, Microsoft 365." />
 </p>
-
-<p align="center">
-  <a href="https://github.com/JMScripts1/game-deal-tracker"><img src="./assets/project-game-deal-tracker.svg" width="100%" alt="Game Deal Tracker. Tracks prices across 30+ PC game stores through the CheapShark API, stores snapshots in a 5-table SQLite schema, and sends a Discord alert when a watched game hits its target price. Streamlit dashboard, pytest suite on Python 3.10 to 3.14." /></a>
-</p>
-
-<p align="center"><sub>Game Deal Tracker also has a <a href="https://jmscripts1.github.io/game-deal-tracker/">live page</a>.</sub></p>
-
-### ✦ résumé
-
-<p align="center">
-  <img src="./assets/resume.svg" width="100%" alt="Experience: IT Support and Systems Co-op at Personal Touch Computers, Sep 2023 to Feb 2024; Court Monitor and Guest Services at Flying Squirrel Sports, Jun 2023 to Nov 2026. Education: Ontario Tech University, BSc Computer Science, expected Apr 2029." />
-</p>
-
-<p align="center"><a href="https://jmscripts1.github.io/assets/Joshua_Mathias_Resume.pdf"><b>full résumé (PDF)</b></a></p>
-
-### ✦ toolbox
-
-<p align="center">
-  <img src="./assets/toolbox.svg" width="100%" alt="Languages: Python, C++, SQL, Java, Bash, PowerShell. Frameworks: FastAPI, SQLAlchemy, Streamlit, pandas, pytest. Databases: PostgreSQL, SQLite. Infrastructure: Docker, Docker Compose, Git, GitHub Actions, Linux (systemd), Windows Server, Microsoft 365." />
-</p>
-
-### ✦ on github
 
 <p align="center">
   <img src="./profile/stats.svg" height="170" alt="Josh's GitHub stats" />

@@ -35,6 +35,21 @@ TAGLINE = "Backend and cloud infrastructure."
 INTRO = "CS student at Ontario Tech. Looking for a Winter 2027 co-op."
 SITE = "jmscripts1.github.io"
 
+# **double asterisks** mark bold words in ABOUT and RIGHT_NOW.
+ABOUT = [
+    "CS student at **Ontario Tech** in Whitby, ON. I work on backend and infrastructure: "
+    "APIs, databases, containers and the CI pipelines around them.",
+    "Before uni I did IT support at a managed service provider, imaging about 100 machines "
+    "for about 40 small businesses, which is where **OpsWatch** came from.",
+    "Off the clock I make soul beats, cut the occasional edit, read too much manhwa and lift.",
+]
+
+RIGHT_NOW = [
+    "looking for a **Winter 2027 co-op** in backend, cloud or infrastructure",
+    "building **OpsWatch**, self-hosted IT health monitoring",
+    "happy to talk about Python, Docker and SQL, or why your PC won't boot",
+]
+
 PROJECTS = [
     {
         "file": "project-opswatch.svg",
@@ -57,7 +72,7 @@ PROJECTS = [
         "file": "project-game-deal-tracker.svg",
         "title": "Game Deal Tracker",
         "area": "backend & data",
-        "repo": "github.com/JMScripts1/game-deal-tracker",
+        "repo": "jmscripts1.github.io/game-deal-tracker",  # the card links to the live page
         "image": "game-deal-tracker.jpg",
         "crop": (340, 30, 1400, 880),  # the main dashboard panel of the screenshot
         "summary": "Tracks prices across 30+ PC game stores through the CheapShark API, stores "
@@ -165,6 +180,12 @@ def wrap(text, size, maxw, weight=400, font=SANS_FONT):
     return lines
 
 
+def glint(x, y, s, fill=WHITE, extra=""):
+    """Four-point star, the same shape as the glints in the night sky."""
+    return (f'<path d="M{x:.1f} {y - s:.1f}Q{x:.1f} {y:.1f} {x + s:.1f} {y:.1f}Q{x:.1f} {y:.1f} {x:.1f} {y + s:.1f}'
+            f'Q{x:.1f} {y:.1f} {x - s:.1f} {y:.1f}Q{x:.1f} {y:.1f} {x:.1f} {y - s:.1f}Z" fill="{fill}"{extra}/>')
+
+
 def image_uri(name, size=None, crop=None, quality=80):
     im = Image.open(SRC / name).convert("L")
     if crop:
@@ -191,6 +212,43 @@ class Card:
             f'<text x="{x:.1f}" y="{y:.1f}" font-family="{fam}" font-size="{size}" font-weight="{weight}" '
             f'fill="{fill}" text-anchor="{anchor}"{extra}>{escape(s)}</text>'
         )
+
+    def label(self, x, y, s):
+        """Section heading inside a card: a glint and a lowercase title."""
+        self.els.append(glint(x + 8, y - 8, 9))
+        self.text(x + 26, y, s, 24, TEXT, 600, extra=' letter-spacing="-.6"')
+
+    def rich(self, x, y, s, size, maxw, lh, fill=MUTED, bold_fill=TEXT, measure_only=False):
+        """Wrapped paragraph where **words** are bold. Returns the y after the last line."""
+        words = []
+        for i, part in enumerate(s.split("**")):
+            words += [(w, i % 2 == 1) for w in part.split()]
+        space = SANS_FONT.measure(" ", size)
+        lines, cur, curw = [], [], 0.0
+        for w, b in words:
+            ww = SANS_FONT.measure(w, size, 600 if b else 400)
+            if cur and curw + space + ww > maxw:
+                lines.append(cur)
+                cur, curw = [], 0.0
+            curw += (space if cur else 0) + ww
+            cur.append((w, b))
+        if cur:
+            lines.append(cur)
+        if not measure_only:
+            for ln in lines:
+                spans = []
+                for j, (w, b) in enumerate(ln):
+                    self.sans_chars.update(w + " ")
+                    t = escape(w) + (" " if j < len(ln) - 1 else "")
+                    spans.append(f'<tspan font-weight="600" fill="{bold_fill}">{t}</tspan>' if b else t)
+                self.els.append(
+                    f'<text x="{x:.1f}" y="{y:.1f}" font-family="{SANS}" font-size="{size}" fill="{fill}" '
+                    f'xml:space="preserve">{"".join(spans)}</text>'
+                )
+                y += lh
+        else:
+            y += lh * len(lines)
+        return y
 
     def chips(self, x, y, tags, maxw, size=13):
         """Outline pills that wrap onto new rows. Returns the y below the last row."""
@@ -255,11 +313,9 @@ def sky(card, rng, density=1.0, meteors=2, top=None, glints=True, dim=1.0):
             card.els.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.2f}" fill="{WHITE}" opacity="{a:.2f}"/>')
     for _ in range(max(2, int(5 * density)) if glints else 0):
         x, y, s = rng.uniform(40, W - 40), rng.uniform(20, h - 20), rng.uniform(5, 9)
-        card.els.append(
-            f'<path class="tw" d="M{x:.1f} {y - s:.1f}Q{x:.1f} {y:.1f} {x + s:.1f} {y:.1f}Q{x:.1f} {y:.1f} {x:.1f} {y + s:.1f}'
-            f'Q{x:.1f} {y:.1f} {x - s:.1f} {y:.1f}Q{x:.1f} {y:.1f} {x:.1f} {y - s:.1f}Z" fill="{WHITE}" '
-            f'style="--a:.85;opacity:.85;animation-duration:{rng.uniform(3, 5):.1f}s;animation-delay:-{rng.uniform(0, 4):.1f}s"/>'
-        )
+        card.els.append(glint(x, y, s, extra=(
+            f' class="tw" style="--a:.85;opacity:.85;animation-duration:{rng.uniform(3, 5):.1f}s;'
+            f'animation-delay:-{rng.uniform(0, 4):.1f}s"')))
     # Shooting stars: each crosses in about a second, then waits for the rest of its cycle.
     for i in range(meteors):
         dur = rng.uniform(7, 11)
@@ -308,6 +364,34 @@ def banner():
     c.write("banner.svg")
 
 
+def about():
+    lx, lw = 48, 720
+    rx, rw = 840, W - 840 - 48
+    probe = Card(10, "", "")
+    ly = 64 + 46
+    for para in ABOUT:
+        ly = probe.rich(lx, ly, para, 18, lw, 29, measure_only=True) + 14
+    ry = 64 + 46 + 26
+    for item in RIGHT_NOW:
+        ry = probe.rich(rx + 22, ry, item, 16, rw - 22, 25, measure_only=True) + 12
+    h = max(ly, ry) + 30
+    plain = lambda t: t.replace("**", "")
+    c = Card(int(h), "hi, i'm josh", " ".join(plain(t) for t in ABOUT) + " Right now: " + "; ".join(plain(t) for t in RIGHT_NOW))
+    sky(c, random.Random(5), density=0.3, meteors=1, glints=False, dim=0.5)
+    c.label(lx, 64, "hi, i'm josh")
+    y = 64 + 46
+    for para in ABOUT:
+        y = c.rich(lx, y, para, 18, lw, 29, fill=SOFT) + 14
+    c.els.append(f'<rect x="{rx - 32}" y="{64 + 46 - 18}" width="1" height="{ry - 64 - 46:.0f}" fill="{LINE}"/>')
+    y = 64 + 46
+    c.text(rx, y, "right now", 13, MUTED, 450, mono=True)
+    y += 26
+    for item in RIGHT_NOW:
+        c.els.append(glint(rx + 6, y - 5, 5, fill=SOFT))
+        y = c.rich(rx + 22, y, item, 16, rw - 22, 25, fill=MUTED) + 12
+    c.write("about.svg")
+
+
 def head(c, p, x, y, maxw):
     """Title, area and status, and the repo path on the right. Returns the next y."""
     c.text(x, y, p["title"], 34, TEXT, 600, extra=' letter-spacing="-1"')
@@ -328,10 +412,11 @@ def opswatch(p):
     colw = (maxw - 3 * 24) / 4
     step_lines = [wrap(t, 14.5, colw) for _, t in p["steps"]]
     rows = max(len(s) for s in step_lines)
-    h = 48 + 40 + 66 + len(lines) * 27 + 28 + 26 + rows * 21 + 30 + 30 + 48
+    h = 48 + 40 + 66 + len(lines) * 27 + 28 + 26 + rows * 21 + 30 + 30 + 48 + 56
     c = Card(int(h), p["title"], p["summary"])
     sky(c, random.Random(11), density=0.3, meteors=1, glints=False, dim=0.5)
-    y = head(c, p, x, 88, maxw)
+    c.label(x, 64, "projects")
+    y = head(c, p, x, 88 + 56, maxw)
     for ln in lines:
         c.text(x, y, ln, 17, MUTED)
         y += 27
@@ -396,11 +481,12 @@ def resume():
         pts = [wrap(pt, 15, leftw - 40) for pt in e["points"]]
         blocks.append((e, pts, 26 + 24 + sum(len(p) * 22 + 6 for p in pts) + 22))
     course = wrap(EDUCATION["coursework"], 15, rightw - 24)
-    h = max(48 + 30 + sum(b[2] for b in blocks), 48 + 30 + 26 + 24 + 24 + 30 + len(course) * 22) + 48
+    h = max(48 + 30 + sum(b[2] for b in blocks), 48 + 30 + 26 + 24 + 24 + 30 + len(course) * 22) + 48 + 56
     c = Card(int(h), "Résumé", "Experience: " + "; ".join(f"{e['role']}, {e['org']}, {e['when']}" for e in EXPERIENCE)
              + f". Education: {EDUCATION['school']}, {EDUCATION['degree']}, {EDUCATION['when']}.")
     sky(c, random.Random(23), density=0.3, meteors=1, glints=False, dim=0.5)
-    y = 64
+    c.label(leftx, 64, "résumé")
+    y = 64 + 56
     c.text(leftx, y, "experience", 13, MUTED, 450, mono=True)
     y += 30
     for i, (e, pts, bh) in enumerate(blocks):
@@ -415,7 +501,7 @@ def resume():
                 py += 22
             py += 6
         y += bh
-    y = 64
+    y = 64 + 56
     c.text(rightx, y, "education", 13, MUTED, 450, mono=True)
     y += 30
     top = y - 18
@@ -437,7 +523,7 @@ def toolbox():
     maxw = W - 96 - labelw
     # lay out once to find the height
     probe = Card(10, "", "")
-    y = 56
+    y = 56 + 52
     rows = []
     for label, tags in TOOLBOX:
         end = probe.chips(x0 + labelw, y, tags, maxw)
@@ -446,6 +532,7 @@ def toolbox():
     h = y - 18 + 48
     c = Card(int(h), "Toolbox", "; ".join(f"{l}: {', '.join(t)}" for l, t in TOOLBOX))
     sky(c, random.Random(31), density=0.3, meteors=0, glints=False, dim=0.5)
+    c.label(x0, 64, "toolbox")
     for (label, ry), (_, tags) in zip(rows, TOOLBOX):
         c.text(x0, ry + 20, label, 15.5, MUTED, 500)
         c.chips(x0 + labelw, ry, tags, maxw)
@@ -470,6 +557,7 @@ def footer():
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     banner()
+    about()
     opswatch(PROJECTS[0])
     tracker(PROJECTS[1])
     resume()
