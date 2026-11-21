@@ -32,7 +32,7 @@ OUT = ROOT / "assets"
 
 NAME = "Joshua Mathias"
 TAGLINE = "Backend and cloud infrastructure."
-INTRO = "CS student at Ontario Tech. Looking for a Winter 2027 co-op."
+INTRO = "CS student at Ontario Tech. Looking for a Summer 2027 internship."
 SITE = "jmscripts1.github.io"
 
 # **double asterisks** mark bold words in ABOUT and RIGHT_NOW.
@@ -45,7 +45,7 @@ ABOUT = [
 ]
 
 RIGHT_NOW = [
-    "looking for a **Winter 2027 co-op** in backend, cloud or infrastructure",
+    "looking for a **Summer 2027 internship** in backend, cloud or infrastructure",
     "building **OpsWatch**, self-hosted IT health monitoring",
     "happy to talk about Python, Docker and SQL, or why your PC won't boot",
 ]
@@ -220,26 +220,33 @@ class Card:
 
     def rich(self, x, y, s, size, maxw, lh, fill=MUTED, bold_fill=TEXT, measure_only=False):
         """Wrapped paragraph where **words** are bold. Returns the y after the last line."""
-        words = []
+        # (word, bold, glued): glued words follow the previous one with no space,
+        # e.g. the comma in "**OpsWatch**, self-hosted".
+        words, prev = [], ""
         for i, part in enumerate(s.split("**")):
-            words += [(w, i % 2 == 1) for w in part.split()]
+            for k, w in enumerate(part.split()):
+                glued = k == 0 and bool(words) and not part[:1].isspace() and not prev[-1:].isspace()
+                words.append((w, i % 2 == 1, glued))
+            prev = part
         space = SANS_FONT.measure(" ", size)
         lines, cur, curw = [], [], 0.0
-        for w, b in words:
+        for w, b, glued in words:
             ww = SANS_FONT.measure(w, size, 600 if b else 400)
-            if cur and curw + space + ww > maxw:
+            gap = 0 if glued or not cur else space
+            if cur and not glued and curw + gap + ww > maxw:
                 lines.append(cur)
-                cur, curw = [], 0.0
-            curw += (space if cur else 0) + ww
-            cur.append((w, b))
+                cur, curw, gap = [], 0.0, 0
+            curw += gap + ww
+            cur.append((w, b, glued))
         if cur:
             lines.append(cur)
         if not measure_only:
             for ln in lines:
                 spans = []
-                for j, (w, b) in enumerate(ln):
+                for j, (w, b, _) in enumerate(ln):
                     self.sans_chars.update(w + " ")
-                    t = escape(w) + (" " if j < len(ln) - 1 else "")
+                    nxt_glued = j < len(ln) - 1 and ln[j + 1][2]
+                    t = escape(w) + (" " if j < len(ln) - 1 and not nxt_glued else "")
                     spans.append(f'<tspan font-weight="600" fill="{bold_fill}">{t}</tspan>' if b else t)
                 self.els.append(
                     f'<text x="{x:.1f}" y="{y:.1f}" font-family="{SANS}" font-size="{size}" fill="{fill}" '
