@@ -17,7 +17,7 @@ jobs:
   cards:
     runs-on: ubuntu-latest
     env:
-      THEME: bg_color=FFF7F9&title_color=C9506F&text_color=6E3A52&icon_color=EE8FA8&ring_color=EE8FA8&hide_border=true&border_radius=24
+      THEME: bg_color=0A0A0B&title_color=F4F4F5&text_color=A3A3A8&icon_color=F4F4F5&ring_color=F4F4F5&hide_border=true&border_radius=20
     steps:
       - uses: actions/checkout@v5
 
